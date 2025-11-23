@@ -10,7 +10,7 @@
         public string Director { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public string Category { get; set; } // kategori eklendi
+        public string Category { get; set; }
 
         // puanlama
         public double IMDBScore { get; set; }

@@ -10,7 +10,7 @@ namespace VizeProjesi.Models
         // film slider listesi
         public List<Movie> SliderFilmleri { get; set; }
 
-        // haber listesi eklendi
+        // haber listesi
         public List<News> Haberler { get; set; }
     }
 }

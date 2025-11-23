@@ -7,7 +7,6 @@ namespace VizeProjesi.Controllers
 {
     public class HomeController : Controller
     {
-        // Haberleri buraya (GLOBAL ALANA) taşıdık ki her yerden erişilsin
         public static List<News> _newsList = new List<News>
         {
             new News {
@@ -38,7 +37,7 @@ namespace VizeProjesi.Controllers
 
         public IActionResult Index()
         {
-            // Veriler artık yukarıdaki static listeden geliyor
+            // veriler static listeden geliyor
             var vitrin = MovieController._movies.FirstOrDefault(x => x.Id == 7);
             var filmListesi = MovieController._movies;
 
@@ -46,13 +45,12 @@ namespace VizeProjesi.Controllers
             {
                 VitrinFilmi = vitrin,
                 SliderFilmleri = filmListesi,
-                Haberler = _newsList // Global listeyi buraya bağladık
+                Haberler = _newsList 
             };
 
             return View(model);
         }
-
-        // YENİ EKLENEN KISIM: Haber Detay Sayfası Action'ı
+        //haber detay sayfası
         public IActionResult NewsDetails(int id)
         {
             var haber = _newsList.FirstOrDefault(x => x.Id == id);

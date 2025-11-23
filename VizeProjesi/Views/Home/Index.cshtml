@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Ana Sayfa";
-    // Kategorileri belirledik
     var kategoriler = Model.SliderFilmleri.Select(x => x.Category).Distinct().ToList();
 }
 

@@ -8,6 +8,7 @@ namespace VizeProjesi.Controllers
     public class MovieController : Controller
     {
         // 50 filmlik dev liste oluşturuldu, isimler orijinal haliyle girildi
+        // fimlerin büyük kısmı ai tarafından yazıldı
         public static List<Movie> _movies = new List<Movie>
         {
             // --- THE DARK KNIGHT TRILOGY (AKSİYON) ---
