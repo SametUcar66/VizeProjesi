@@ -1,11 +1,11 @@
-﻿// sayfa yüklendiğinde çalışması sağlandı
+﻿
 document.addEventListener("DOMContentLoaded", function () {
 
     // slider ayarları tanımlandı
     var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 1,      // mobilde 1 tane gösterildi
-        spaceBetween: 20,      // boşluk bırakıldı
-        loop: true,            // sonsuz döngü açıldı
+        slidesPerView: 1,     
+        spaceBetween: 20,     
+        loop: true,          
 
         // ok tuşları tanımlandı
         navigation: {
@@ -19,10 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
             clickable: true,
         },
 
-        // ekran boyutuna göre ayar yapıldı
         breakpoints: {
-            640: { slidesPerView: 2 }, // tablette 2
-            1024: { slidesPerView: 4 } // pc'de 4
+            640: { slidesPerView: 2 }, 
+            1024: { slidesPerView: 4 }
         }
     });
 });
