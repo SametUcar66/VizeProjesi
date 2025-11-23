@@ -2,15 +2,17 @@
 {
     public class Movie
     {
-        // Veritabanı birincil anahtarı (Primary Key) simülasyonu
+        // birincil anahtar
         public int Id { get; set; }
 
+        // film bilgileri
         public string Title { get; set; }
         public string Director { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public string Category { get; set; } // kategori eklendi
 
-        // Mantıksal işlemler (if-else) yapabilmek için puan özelliği ekledim
+        // puanlama
         public double IMDBScore { get; set; }
     }
 }

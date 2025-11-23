@@ -1,37 +1,33 @@
 ﻿@model List<VizeProjesi.Models.Movie>
 
-<div class="container py-4">
+<div class="container py-5">
+
     <div class="text-center mb-5">
-        <h2 class="fw-bold display-5">Küratör Seçimi Filmler</h2>
-        <p class="text-muted">IMDb puanına göre özel olarak sıralanmıştır.</p>
+        <h2 class="display-5 fw-bold mb-4">Film Kütüphanesi</h2>
+        <div class="btn-group" role="group">
+            <a href="/Movie/Index" class="btn btn-outline-light">Tümü</a>
+            <a href="/Movie/Index?category=Aksiyon" class="btn btn-outline-danger">Aksiyon</a>
+            <a href="/Movie/Index?category=Bilim Kurgu" class="btn btn-outline-warning">Bilim Kurgu</a>
+            <a href="/Movie/Index?category=Drama" class="btn btn-outline-info">Drama</a>
+            <a href="/Movie/Index?category=Anime" class="btn btn-outline-success">Anime</a>
+        </div>
     </div>
 
     <div class="row">
         @foreach (var film in Model)
         {
-            <div class="col-md-4 mb-5">
-                <div class="card movie-card h-100 shadow border-0">
-
+            <div class="col-md-3 mb-4">
+                <div class="card movie-card h-100">
                     <div class="position-relative">
-                        <img src="/img/@film.ImageUrl" class="card-img-top" alt="@film.Title" style="height: 350px; object-fit: cover;">
-
-                        <span class="position-absolute top-0 end-0 badge m-2 fs-6 @(film.IMDBScore >= 8.5 ? "bg-success" : "bg-warning text-dark")">
-                            IMDb: @film.IMDBScore
-                        </span>
-                    </div>
-
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">@film.Title</h5>
-
-                        <p class="card-text text-muted small">
-                            @(film.Description.Length > 60 ? film.Description.Substring(0, 60) + "..." : film.Description)
-                        </p>
-
-                        <div class="mt-auto">
-                            <a href="/Movie/Details/@film.Id" class="btn btn-dark w-100">
-                                <i class="bi bi-film"></i> Detayları İncele
-                            </a>
+                        <img src="/img/@film.ImageUrl" class="card-img-top movie-list-img" style="height:300px;" alt="@film.Title">
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge badge-imdb px-2 py-1 shadow">★ @film.IMDBScore</span>
                         </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-white fs-6">@film.Title</h5>
+                        <p class="text-secondary small mb-2">@film.Category</p>
+                        <a href="/Movie/Details/@film.Id" class="btn btn-outline-light w-100 btn-sm">DETAYLAR</a>
                     </div>
                 </div>
             </div>

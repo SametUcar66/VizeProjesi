@@ -1,18 +1,18 @@
 ﻿@model VizeProjesi.Models.Movie
 
 <div class="container mt-5">
-    <div class="card shadow-lg border-0 overflow-hidden">
+    <div class="card shadow-lg border-0 overflow-hidden bg-dark text-white">
         <div class="row g-0">
             <div class="col-md-5">
-                <img src="/img/@Model.ImageUrl" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 450px;" alt="@Model.Title">
+                <img src="/img/@Model.ImageUrl" class="img-fluid movie-detail-img" alt="@Model.Title">
             </div>
-            <div class="col-md-7 bg-light">
+            <div class="col-md-7">
                 <div class="card-body p-5 d-flex flex-column h-100 justify-content-center">
 
                     <h1 class="display-4 fw-bold mb-3">@Model.Title</h1>
 
                     <div class="mb-4">
-                        <span class="badge @(Model.IMDBScore >= 8.5 ? "bg-success" : "bg-warning text-dark") fs-5 px-3 py-2">
+                        <span class="badge @(Model.IMDBScore >= 8.5 ? "bg-success" : "badge-imdb") fs-5 px-3 py-2">
                             IMDb: @Model.IMDBScore
                         </span>
                         <span class="badge bg-secondary fs-5 px-3 py-2 ms-2">Yönetmen: @Model.Director</span>
@@ -24,7 +24,7 @@
                     </p>
 
                     <div class="mt-5">
-                        <a href="/Movie/Index" class="btn btn-outline-dark btn-lg px-5">
+                        <a href="/Movie/Index" class="btn btn-outline-light btn-lg px-5">
                             &laquo; Listeye Dön
                         </a>
                     </div>

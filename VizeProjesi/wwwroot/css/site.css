@@ -1,34 +1,148 @@
-﻿/* site.css - Modern Tasarım Kodları */
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
 body {
-    background-color: #f8f9fa; /* Hafif gri arka plan */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #141414;
+    color: #e5e5e5;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* Film Kartları için Efektler */
-.movie-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
-    background: white;
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-    /* Üzerine gelince büyüme efekti (Artislik Kısım) */
-    .movie-card:hover {
-        transform: translateY(-10px); /* Yukarı doğru kalkar */
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Gölge artar */
-        cursor: pointer;
+.navbar {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%) !important;
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    color: #E50914 !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(229, 9, 20, 0.7);
+}
+
+.nav-link {
+    color: #fff !important;
+    font-weight: 300;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+    .nav-link:hover {
+        color: #E50914 !important;
     }
 
-/* Navbar Düzenlemesi */
-.navbar {
-/*background: linear-gradient(90deg, #1a2a6c, #b21f1f, #fdbb2d) !important; */
+.hero-banner {
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: -1.5rem;
 }
 
-/* Detay Sayfası Başlıkları */
-.detail-header {
-    border-left: 5px solid #b21f1f;
-    padding-left: 15px;
-    color: #333;
+.hero-text-shadow {
+    text-shadow: 2px 2px 4px black;
 }
-    
+
+.category-box {
+    background: #222;
+    border-bottom: 3px solid #E50914;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    height: 100%;
+}
+
+.category-title {
+    margin: 0;
+    color: white;
+}
+
+.movie-card {
+    background-color: #1f1f1f;
+    border: none;
+    transition: all 0.4s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .movie-card:hover {
+        transform: scale(1.05);
+        z-index: 2;
+        box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+    }
+
+.movie-list-img {
+    height: 400px;
+    object-fit: cover;
+    opacity: 0.9;
+    width: 100%;
+}
+
+.badge-imdb {
+    background-color: #f5c518;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.movie-detail-img {
+    object-fit: cover;
+    min-height: 450px;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-netflix {
+    background-color: #E50914;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+    .btn-netflix:hover {
+        background-color: #b20710;
+        color: white;
+        box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+    }
+
+.card-dark {
+    background-color: #1f1f1f;
+    color: #e5e5e5;
+    border: 1px solid #333;
+}
+
+.form-control-dark {
+    background-color: #333;
+    border: 1px solid #444;
+    color: white;
+}
+
+    .form-control-dark:focus {
+        background-color: #444;
+        color: white;
+        border-color: #E50914;
+        box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
+    }
+
+    .form-control-dark::placeholder {
+        color: #bbb;
+    }
+
+.profile-img-shadow {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+.swiper {
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    height: auto;
+}

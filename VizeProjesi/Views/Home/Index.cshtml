@@ -1,32 +1,98 @@
-﻿@{
+﻿@model VizeProjesi.Models.HomeViewModel
+
+@{
     ViewData["Title"] = "Ana Sayfa";
+    // Kategorileri belirledik
+    var kategoriler = Model.SliderFilmleri.Select(x => x.Category).Distinct().ToList();
 }
 
-<div class="p-5 mb-4 bg-light rounded-3 shadow text-center border">
-    <div class="container-fluid py-5">
-        <h1 class="display-4 fw-bold">Sinema Dünyasına Hoş Geldiniz</h1>
-        <p class="col-md-8 fs-4 mx-auto">En yeni filmler, unutulmaz klasikler ve yönetmenlerin dünyası burada.</p>
-        <a href="/Movie/Index" class="btn btn-secondary btn-lg px-4 gap-3">Filmleri Keşfet &raquo;</a>
+<div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), #141414), url('/img/@Model.VitrinFilmi.ImageUrl');">
+    <div class="container text-white">
+        <div class="col-md-8">
+            <h5 class="text-uppercase text-danger fw-bold mb-3">#1 Önerilen</h5>
+            <h1 class="display-1 fw-bold mb-4">@Model.VitrinFilmi.Title</h1>
+            <p class="lead mb-4 hero-text-shadow">@Model.VitrinFilmi.Description</p>
+            <a href="/Movie/Details/@Model.VitrinFilmi.Id" class="btn btn-netflix btn-lg px-5 py-3">
+                <i class="bi bi-play-fill"></i> İNCELE
+            </a>
+        </div>
     </div>
 </div>
 
-<div class="row text-center mt-5">
-    <div class="col-lg-4">
-        <div class="card p-4 shadow-sm h-100">
-            <h3>🎬 Güncel Filmler</h3>
-            <p>Her zaman en güncel ve popüler filmleri listeliyoruz.</p>
+<div class="container mt-5 pb-4">
+
+    @foreach (var kategori in kategoriler)
+    {
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="ps-2 text-uppercase" style="border-left: 5px solid #E50914;">@kategori</h3>
+                <a href="/Movie/Index?category=@kategori" class="text-decoration-none text-muted small">Tümünü Gör &raquo;</a>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    @foreach (var film in Model.SliderFilmleri.Where(x => x.Category == kategori))
+                    {
+                        <div class="swiper-slide">
+                            <div class="card movie-card h-100 border-0 bg-dark text-white">
+                                <div class="position-relative">
+                                    <img src="/img/@film.ImageUrl"
+                                         class="card-img-top"
+                                         style="height: 250px; object-fit: cover; opacity: 0.9;"
+                                         alt="@film.Title">
+
+                                    <div class="position-absolute top-0 end-0 m-2">
+                                        <span class="badge badge-imdb shadow">★ @film.IMDBScore</span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-2">
+                                    <h6 class="card-title text-truncate">@film.Title</h6>
+                                    <a href="/Movie/Details/@film.Id" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-button-next text-danger"></div>
+                <div class="swiper-button-prev text-danger"></div>
+            </div>
         </div>
+    }
+</div>
+
+<div class="container pb-5 mb-5">
+    <div class="d-flex align-items-center mb-4">
+        <h3 class="ps-2 text-uppercase mb-0" style="border-left: 5px solid #E50914;">SİNEMA DÜNYASINDAN HABERLER</h3>
     </div>
-    <div class="col-lg-4">
-        <div class="card p-4 shadow-sm h-100">
-            <h3>⭐ IMDb Puanları</h3>
-            <p>Filmleri seçmeden önce puanlarına göz atabilirsiniz.</p>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card p-4 shadow-sm h-100">
-            <h3>📱 Mobil Uyumlu</h3>
-            <p>Telefonunuzdan veya tabletinizden rahatça gezinin.</p>
-        </div>
+
+    <div class="row g-4">
+        @foreach (var news in Model.Haberler)
+        {
+            <div class="col-md-4">
+                <div class="card card-dark h-100 shadow-sm border-0">
+                    <div style="height: 200px; overflow: hidden;">
+                        <img src="/img/@news.ImageUrl" class="card-img-top w-100 h-100"
+                             style="object-fit: cover; transition: transform 0.3s;"
+                             alt="@news.Title">
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <small class="text-danger fw-bold mb-2">@news.Date</small>
+                        <h5 class="card-title fw-bold">@news.Title</h5>
+                        <p class="card-text text-secondary small flex-grow-1">
+                            @(news.Summary.Length > 90 ? news.Summary.Substring(0, 90) + "..." : news.Summary)
+                        </p>
+
+                        <a href="/Home/NewsDetails/@news.Id" class="btn btn-outline-light btn-sm mt-3 w-100">
+                            Haberi Oku &raquo;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/slider.js"></script>
+}

@@ -1,0 +1,47 @@
+﻿@model VizeProjesi.Models.News
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="mb-4 text-center">
+                <span class="badge bg-danger mb-2">Sinema Haberleri</span>
+                <h1 class="fw-bold display-5 text-white">@Model.Title</h1>
+                <p class="text-secondary">@Model.Date</p>
+            </div>
+
+            <div class="card card-dark shadow-lg mb-4 overflow-hidden border-0">
+                <img src="/img/@Model.ImageUrl" class="img-fluid w-100"
+                     style="max-height: 500px; object-fit: cover;"
+                     alt="@Model.Title">
+            </div>
+
+            <div class="text-light fs-5 lh-lg">
+                <p>@Model.Content</p>
+
+                <p class="text-secondary mt-4">
+                    Detaylar gelmeye devam ediyor. Sinema dünyasındaki gelişmeleri sitemizden takip etmeye devam edin.
+                    Editörün Notu: Bu haber kaynağından doğrulanmıştır.
+                </p>
+            </div>
+
+            <hr class="border-secondary my-5">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="/Home/Index" class="btn btn-outline-light px-4">
+                    &laquo; Ana Sayfaya Dön
+                </a>
+
+                <div>
+                    <button class="btn btn-sm btn-dark"><i class="bi bi-twitter"></i> Paylaş</button>
+                    <button class="btn btn-sm btn-dark"><i class="bi bi-facebook"></i> Beğen</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
